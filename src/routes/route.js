@@ -1,6 +1,61 @@
 const express = require('express');
 const router = express.Router();
 
+//Assignment
+let persons= [
+    {
+    name: "PK",
+    age: 10,
+    votingStatus: false
+ },
+ {
+    name: "SK",
+    age: 20,
+    votingStatus: false
+ },
+ {
+    name: "AA",
+    age: 70,
+    votingStatus: false
+ },
+ {
+    name: "SC",
+    age: 5,
+    votingStatus: false
+ },
+ {
+    name: "HO",
+    age: 40,
+    votingStatus: false
+ },
+ {
+    name : "sumit",
+    age: 150,
+    votingStatus: false
+ }
+
+ ]
+  
+router.post('/ableToVote', function (req,res) {
+    let data = req.query.age
+    let arr = []
+    persons.forEach((object=>{
+        if(object.age>data){
+            object.votingStatus =true
+            arr.push(object)
+        }
+    }))
+    res.send({msg:arr})}
+)
+
+
+
+
+
+
+
+
+
 router.get('/students/:name', function(req, res) {
     let studentName = req.params.name
     console.log(studentName)
